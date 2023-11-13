@@ -4,16 +4,10 @@ from tkinter import messagebox
 
 def configurar_wsl(diretorio, memoria, processadores):
     try:
-        # Caminho completo para o arquivo .wslconfig no diretório fornecido
         caminho_wslconfig = os.path.join(diretorio, ".wslconfig")
-
-        # Cria o conteúdo do arquivo .wslconfig
         conteudo = f"[wsl2]\nmemory={memoria}\nprocessors={processadores}"
-
-        # Escreve o conteúdo no arquivo .wslconfig
         with open(caminho_wslconfig, "w") as arquivo:
             arquivo.write(conteudo)
-
         messagebox.showinfo("Configuração Concluída", "As configurações do WSL2 foram ajustadas com sucesso.")
     except Exception as e:
         messagebox.showerror("Erro", f"Ocorreu um erro ao configurar o WSL2: {str(e)}")
@@ -48,11 +42,9 @@ def configurar():
     if diretorio and memoria is not None and processadores is not None:
         configurar_wsl(diretorio, memoria, processadores)
 
-# Criar a janela principal
 root = tk.Tk()
 root.title("Configuração WSL2")
 
-# Criar e posicionar os elementos na janela
 label_diretorio = tk.Label(root, text="Insira o diretório onde deseja criar o arquivo .wslconfig:")
 label_diretorio.pack(pady=10)
 
@@ -74,5 +66,4 @@ entry_processadores.pack(pady=10)
 button = tk.Button(root, text="Configurar WSL2", command=configurar)
 button.pack(pady=20)
 
-# Iniciar o loop principal da interface gráfica
 root.mainloop()
