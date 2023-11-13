@@ -5,9 +5,12 @@ from tkinter import messagebox
 def configurar_wsl(diretorio, memoria, processadores):
     try:
         caminho_wslconfig = os.path.join(diretorio, ".wslconfig")
-        conteudo = f"[wsl2]\nmemory={memoria}\nprocessors={processadores}"
+
+        conteudo = f"[wsl2]\nmemory={memoria}GB\nprocessors={processadores}"
+
         with open(caminho_wslconfig, "w") as arquivo:
             arquivo.write(conteudo)
+
         messagebox.showinfo("Configuração Concluída", "As configurações do WSL2 foram ajustadas com sucesso.")
     except Exception as e:
         messagebox.showerror("Erro", f"Ocorreu um erro ao configurar o WSL2: {str(e)}")
